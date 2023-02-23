@@ -139,14 +139,14 @@ public class Enunciat {
         després de fer servir "put".
 
         S'ha de fer servir el mètode "put" generar les següents situacions:
-            Inserir un element que no col·lisiona dins una taula vuida (sense elements).
-            Inserir un element que no col·lisiona dins una taula no vuida (amb elements).
-            Inserir un element que col·lisiona dins una taula no vuida, que es col·locarà en 2a posició dins el mateix bucket.
-            Inserir un element que col·lisiona dins una taula no vuida, que es col·locarà en 3a posició dins el mateix bucket.
-            Inserir un elements que ja existeix (update) sobre un element que no col·lisiona dins una taula no vuida.
-            Inserir un elements que ja existeix (update) sobre un element que si col·lisiona (1a posició) dins una taula no vuida.
-            Inserir un elements que ja existeix (update) sobre un element que si col·lisiona (2a posició) dins una taula no vuida.
-            Inserir un elements que ja existeix (update) sobre un element que si col·lisiona (3a posició) dins una taula no vuida.
+           1. Inserir un element que no col·lisiona dins una taula vuida (sense elements).
+           2. Inserir un element que no col·lisiona dins una taula no vuida (amb elements).
+           3. Inserir un element que col·lisiona dins una taula no vuida, que es col·locarà en 2a posició dins el mateix bucket.
+           4. Inserir un element que col·lisiona dins una taula no vuida, que es col·locarà en 3a posició dins el mateix bucket.
+           5. Inserir un elements que ja existeix (update) sobre un element que no col·lisiona dins una taula no vuida.
+           6. Inserir un elements que ja existeix (update) sobre un element que si col·lisiona (1a posició) dins una taula no vuida.
+           7. Inserir un elements que ja existeix (update) sobre un element que si col·lisiona (2a posició) dins una taula no vuida.
+           8. Inserir un elements que ja existeix (update) sobre un element que si col·lisiona (3a posició) dins una taula no vuida.
 
     Get:
         S'ha de fer servir el mètode "get" per a comprovar que la taula retorna els elements correctes.
