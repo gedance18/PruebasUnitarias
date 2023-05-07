@@ -34,26 +34,24 @@ public class HashTable {
         if(entries[hash] == null) {
             entries[hash] = hashEntry;
 
+            //ERROR: falta código de colisión
+            //Código añadido: Para hacer update si se repite la misma key pero tienen diferente valor
         } else if (entries[hash].key == hashEntry.key){
             entries[hash].value = hashEntry.value;
         }
         else {
-            //ERROR: falta código de colisión
-            //Código viejo
-            /*HashEntry temp = entries[hash];
-            while(temp.next != null)
-                temp = temp.next;
-
-            temp.next = hashEntry;
-            hashEntry.prev = temp;*/
-
-            //Código arreglado
             HashEntry temp = entries[hash];
-            while(temp.next != null)
+            while (temp.next != null)
                 temp = temp.next;
+            //ERROR: falta código de comprovacion
+            //Código añadido: Para hacer un update a un elemento que ha colisionado
+            if (temp.key == key) {
+                temp.value = value;
+            } else {
+                temp.next = hashEntry;
 
-            temp.next = hashEntry;
-            hashEntry.prev = temp;
+                hashEntry.prev = temp;
+            }
         }
     }
 
@@ -67,10 +65,19 @@ public class HashTable {
         if(entries[hash] != null) {
             HashEntry temp = entries[hash];
 
-            while( !temp.key.equals(key))
-                temp = temp.next;
+            //ERROR: falta código para solucionar el NullPointerException
+            //while( !temp.key.equals(key))
+            //                temp = temp.next;
+            //
+            //            return temp.value;
+            //Codigo solucionado:
 
-            return temp.value;
+            while(temp != null) {
+                if(temp.key.equals(key)){
+                    return temp.value;
+                }
+                temp = temp.next;
+            }
         }
 
         return null;
@@ -85,13 +92,28 @@ public class HashTable {
         if(entries[hash] != null) {
 
             HashEntry temp = entries[hash];
-            while( !temp.key.equals(key))
+
+            //ERROR: falta código para que reste el Item
+            /*while( !temp.key.equals(key))
                 temp = temp.next;
 
             if(temp.prev == null) entries[hash] = null;             //esborrar element únic (no col·lissió)
             else{
                 if(temp.next != null) temp.next.prev = temp.prev;   //esborrem temp, per tant actualitzem l'anterior al següent
                 temp.prev.next = temp.next;                         //esborrem temp, per tant actualitzem el següent de l'anterior
+            }*/
+
+            if (temp.key.equals(key)) {
+                entries[hash] = temp.next;
+                ITEMS--; //Disminuim un ITEM cada vegada que esborrem
+                return;
+            }
+            while (temp.next != null && !temp.next.key.equals(key)) {
+                temp = temp.next;
+            }
+            if (temp.next != null) {
+                ITEMS--; //Disminuim un ITEM cada vegada que esborrem
+                temp.next = temp.next.next;
             }
         }
     }
